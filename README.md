@@ -1,7 +1,7 @@
 #Behaviour Trees in Lua
 
-  A first approach to [behaviour trees](http://www.altdevblogaday.com/2011/02/24/introduction-to-behavior-trees) in Lua. Implements Actions, Conditions, Selectors and Sequences. Requires [hump.class](http://vrld.github.com/hump/).
----------------------------------------------------------------------------
+A first approach to [behaviour trees](http://www.altdevblogaday.com/2011/02/24/introduction-to-behavior-trees) in Lua. Implements Actions, Conditions, Selectors and Sequences. Requires [hump.class](http://vrld.github.com/hump/).
+
     -- Example
 
     local TRUE = function() return true end
