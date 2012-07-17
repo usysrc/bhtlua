@@ -56,9 +56,9 @@
 
 
     function exampleLoop()
-    for i=1,10 do
-    simpleBehaviour:update()
-    end
+        for i=1,10 do
+            simpleBehaviour:update()
+        end
     end
 
     exampleLoop()
