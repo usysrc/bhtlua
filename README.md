@@ -20,8 +20,8 @@
     local flyHome = Action(function() print("flying home") return true end)
     local putTreasureAway = Action(function() print("putting treasure away") return true end)
     local postPicturesOfTreasureOnFacebook = Action(function() 
-    print("posting pics on facebook")
-    return true 
+        print("posting pics on facebook")
+        return true 
     end)
 
     -- testing subtree
