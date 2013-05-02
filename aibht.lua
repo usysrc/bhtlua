@@ -5,16 +5,16 @@
 --  Copyright (c) 2012 Headchant. All rights reserved.
 --
 
-require 'hump.class'
+local Class = require 'hump.class'
 
 local READY = "ready"
 local RUNNING = "running"
 local FAILED = "failed"
 
-Action = Class(function(self, task)
+Action = Class({init = function(self, task)
     self.task = task
     self.completed = false
-end)
+end})
 
 function Action:update(creatureAI)
     if self.completed then return READY end
@@ -22,17 +22,17 @@ function Action:update(creatureAI)
     return RUNNING
 end
 
-Condition = Class(function(self, condition)
+Condition = Class({init = function(self, condition)
     self.condition = condition
-end)
+end})
 
 function Condition:update(creatureAI)
     return self.condition(creatureAI) and READY or FAILED
 end
 
-Selector = Class(function(self, children)
+Selector = Class({init = function(self, children)
     self.children = children
-end)
+end})
 
 function Selector:update(creatureAI)
     for i,v in ipairs(self.children) do
@@ -55,21 +55,21 @@ function Selector:resetChildren()
     end
 end
 
-Sequence = Class(function(self, children)
+Sequence = Class({init = function(self, children)
     self.children = children
     self.last = nil
     self.completed = false
-end)
+end})
 
 function Sequence:update(creatureAI)
     if self.completed then return READY end
-    
+
     local last = 1
-    
+
     if self.last and self.last ~= #self.children then
         last = self.last + 1
     end
-    
+
     for i = last, #self.children do
         local v = self.children[i]:update(creatureAI)
         if v == RUNNING then
@@ -115,9 +115,9 @@ local fightAndEatGuards = Action(function() print("fighting and eating guards") 
 local takeGold = Action(function() print("picking up gold") return true end)
 local flyHome = Action(function() print("flying home") return true end)
 local putTreasureAway = Action(function() print("putting treasure away") return true end)
-local postPicturesOfTreasureOnFacebook = Action(function() 
+local postPicturesOfTreasureOnFacebook = Action(function()
     print("posting pics on facebook")
-    return true 
+    return true
 end)
 
 -- testing subtree
@@ -125,7 +125,7 @@ local packStuffAndGoHome = Selector{
     Sequence{
         stillStrongEnoughToCarryTreasure,
         takeGold,
-    
+
     },
     Sequence{
         flyHome,
@@ -143,7 +143,7 @@ local simpleBehaviour = Selector{
                                 flyToCastle,
                                 fightAndEatGuards,
                                 packStuffAndGoHome
-            
+
                             },
                             Sequence{
                                 postPicturesOfTreasureOnFacebook
