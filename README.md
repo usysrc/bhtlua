@@ -1,6 +1,6 @@
 # Behaviour Trees in Lua
 
-A first approach to [behaviour trees](http://www.altdevblogaday.com/2011/02/24/introduction-to-behavior-trees) in Lua. Implements Actions, Conditions, Selectors and Sequences. Requires [hump.class](http://vrld.github.com/hump/).
+A first approach to [behaviour trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control)) in Lua. Implements Actions, Conditions, Selectors and Sequences. Requires [hump.class](http://vrld.github.com/hump/).
 
 ```lua
     -- Example for turn based game
